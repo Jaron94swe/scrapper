@@ -1,3 +1,4 @@
+// init mobile-friendly sidenav
 $(document).ready(function () {
     $('.sidenav').sidenav();
     $('.modal').modal();
@@ -7,7 +8,7 @@ $(document).ready(function () {
 $.getJSON("/articles", function (data) {
     for (var i = 0; i < data.length; i++) {
         if (!data[i].image.includes("https://")) {
-            data[i].image = 'https://www.ksl.com/news/utah' + data[i].image;
+            data[i].image = 'https://freecodecamp.org' + data[i].image;
         } else {
             console.log('full image link found!');
         }
@@ -31,7 +32,7 @@ $(document).on("click", "article", function () {
             $("#notes").append("<input id='titleinput' placeholder='note title' name='title' >");
             $("#notes").append("<textarea id='bodyinput' placeholder='note body' name='body'></textarea>");
             $("#notes").append("<button class='waves-effect waves-light btn-small black white-text' data-id='" + data._id + "' id='savenote'>Save Note</button>");
-
+            
             if (data.note) {
                 // use map to display // looks like multiple notes save but with odd relationships to the article
                 $("#notes").append("<h6 class='center'>Existing Notes:</h6><hr class='hr-modal'><div id='stored-notes'></div>");

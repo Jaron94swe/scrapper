@@ -9,7 +9,7 @@ var path = require('path');
 // require mongoose models
 var db = require("./models");
 
-var PORT = process.env.PORT || 3004 ;
+var PORT = process.env.PORT || 3004;
 
 var app = express();
 
@@ -27,7 +27,7 @@ app.get('/', function (req, res) {
 });
 
 // connect to the Mongo DB
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/kslnews";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/freeCodeCampNews";
 mongoose.connect(MONGODB_URI, 
   { useNewUrlParser: true, 
   useUnifiedTopology: true, 
@@ -38,11 +38,11 @@ mongoose.connect(MONGODB_URI,
 
 // GET route for scraping the freeCodeCamp news page
 app.get("/scrape", function(req, res) {
-  axios.get("https://www.ksl.com/news/utah").then(function(response) {
+  axios.get("https://www.freecodecamp.org/news").then(function(response) {
     var $ = cheerio.load(response.data);
 
     // grab every article tag, and do the following:
-    $(".queue_story").each(function(i, element) {
+    $("article").each(function(i, element) {
       var result = {};
 
       // Add the text, tag, href and image of every link, and save them as properties of the result object
