@@ -27,12 +27,9 @@ app.get('/', function (req, res) {
 });
 
 // connect to the Mongo DB
-var MONGODB_URI = process.env.MONGODB_URI || "mongod://freeCodeCampNews:wrS!8B@z!R4WpNU@ds261440.mlab.com:61440/heroku_qnv4nc30";
-mongoose.connect(MONGODB_URI, 
-  { useNewUrlParser: true, 
-  useUnifiedTopology: true, 
-  useFindAndModify: false }
-  ).then(() => {console.log('db connected')});
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/freeCodeCampNews";
+mongoose.connect(MONGODB_URI)
+.then(() => {console.log('db connected')});
 
 // Routes================= //
 
